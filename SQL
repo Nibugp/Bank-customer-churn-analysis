@@ -1,0 +1,112 @@
+-- Q1. What is the overall customer churn rate?
+
+SELECT
+    COUNT(*) AS total_customers,
+    SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) AS churned_customers,
+    SUM(CASE WHEN Exited = '0' THEN 1 ELSE 0 END) AS retained_customers,
+    ROUND(100.0 * SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) / COUNT(*), 2) AS churn_rate
+FROM customers;
+
+
+-- Q2. How does average balance differ between churned and retained customers?
+
+SELECT
+    CASE WHEN Exited = '1' THEN 'Churned' ELSE 'Retained' END AS customer_status,
+    COUNT(*) AS total_customers,
+    ROUND(AVG(CAST(Balance AS REAL)), 2) AS average_balance
+FROM customers
+GROUP BY Exited;
+
+
+-- Q3. Which geographical region has the highest churn rate?
+
+SELECT
+    Geography,
+    COUNT(*) AS total_customers,
+    SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) AS churned_customers,
+    ROUND(100.0 * SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) / COUNT(*), 2) AS churn_rate
+FROM customers
+GROUP BY Geography
+ORDER BY churn_rate DESC;
+
+
+-- Q4. How does churn differ between active and inactive customers?
+
+SELECT
+    CASE WHEN IsActiveMember = '1' THEN 'Active' ELSE 'Inactive' END AS activity_status,
+    COUNT(*) AS total_customers,
+    SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) AS churned_customers,
+    ROUND(100.0 * SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) / COUNT(*), 2) AS churn_rate
+FROM customers
+GROUP BY IsActiveMember;
+
+
+-- Q5. Which age groups have higher churn rates?
+
+SELECT
+    CASE
+        WHEN CAST(Age AS INTEGER) BETWEEN 18 AND 30 THEN '18-30'
+        WHEN CAST(Age AS INTEGER) BETWEEN 31 AND 40 THEN '31-40'
+        WHEN CAST(Age AS INTEGER) BETWEEN 41 AND 50 THEN '41-50'
+        WHEN CAST(Age AS INTEGER) BETWEEN 51 AND 60 THEN '51-60'
+        ELSE '61+'
+    END AS age_group,
+    COUNT(*) AS total_customers,
+    SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) AS churned_customers,
+    ROUND(100.0 * SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) / COUNT(*), 2) AS churn_rate
+FROM customers
+GROUP BY age_group
+ORDER BY churn_rate DESC;
+
+
+-- Q6. How does the number of products relate to churn?
+
+SELECT
+    NumOfProducts,
+    COUNT(*) AS total_customers,
+    SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) AS churned_customers,
+    ROUND(100.0 * SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) / COUNT(*), 2) AS churn_rate
+FROM customers
+GROUP BY NumOfProducts
+ORDER BY CAST(NumOfProducts AS INTEGER);
+
+
+-- Q7. Which combinations of geography, age and activity have higher churn rates?
+
+SELECT
+    Geography,
+    CASE
+        WHEN CAST(Age AS INTEGER) BETWEEN 18 AND 30 THEN '18-30'
+        WHEN CAST(Age AS INTEGER) BETWEEN 31 AND 40 THEN '31-40'
+        WHEN CAST(Age AS INTEGER) BETWEEN 41 AND 50 THEN '41-50'
+        WHEN CAST(Age AS INTEGER) BETWEEN 51 AND 60 THEN '51-60'
+        ELSE '61+'
+    END AS age_group,
+    CASE WHEN IsActiveMember = '1' THEN 'Active' ELSE 'Inactive' END AS activity_status,
+    COUNT(*) AS total_customers,
+    SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) AS churned_customers,
+    ROUND(100.0 * SUM(CASE WHEN Exited = '1' THEN 1 ELSE 0 END) / COUNT(*), 2) AS churn_rate
+FROM customers
+GROUP BY Geography, age_group, activity_status
+HAVING COUNT(*) >= 30
+ORDER BY churn_rate DESC;
+
+
+-- Q8. Which customer segments contribute the largest number of churned customers?
+
+SELECT
+    Geography,
+    CASE
+        WHEN CAST(Age AS INTEGER) BETWEEN 18 AND 30 THEN '18-30'
+        WHEN CAST(Age AS INTEGER) BETWEEN 31 AND 40 THEN '31-40'
+        WHEN CAST(Age AS INTEGER) BETWEEN 41 AND 50 THEN '41-50'
+        WHEN CAST(Age AS INTEGER) BETWEEN 51 AND 60 THEN '51-60'
+        ELSE '61+'
+    END AS age_group,
+    CASE WHEN IsActiveMember = '1' THEN 'Active' ELSE 'Inactive' END AS activity_status,
+    COUNT(*) AS churned_customers
+FROM customers
+WHERE Exited = '1'
+GROUP BY Geography, age_group, activity_status
+ORDER BY churned_customers DESC;
+
