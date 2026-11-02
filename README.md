@@ -4,13 +4,19 @@ An end-to-end business analytics project using SQL and Power BI to analyse bank 
 identify customer segments associated with higher churn and support data-driven retention decisions.
 
 ## Business Problem
+
 Customer churn can affect a bank's ability to maintain customer relationships and retain deposits.
 The business aims to:
--Identify customer segments with higher churn rates.
--Understand how credit score, age, account balance, and number of products relate to customer churn.
--Analyze churn patterns across different geographic regions.
--Compare customer churn behaviour between active and inactive members.
--Identify customer segments that may require further investigation and targeted retention efforts.
+
+- Identify customer segments with higher churn rates.
+
+- Understand how credit score, age, account balance, and number of products relate to customer churn.
+
+- Analyze churn patterns across different geographic regions.
+
+- Compare customer churn behaviour between active and inactive members.
+
+- Identify high-churn customer segments and highlight areas for further investigation and targeted retention strategies.
 
 ## Dataset
 - **Source:** Bank Customer Churn Dataset 
@@ -35,9 +41,7 @@ The business aims to:
 | `Exited` | Customer churn status (1 = churned, 0 = retained) |
 
 ## Tools & Technologies
-SQLite / SQLiteStudio — Data validation and SQL analysis
-
-SQL — Data cleaning, aggregation, segmentation, and window functions
+SQLite / SQLiteStudio — Data validation,cleaning and SQL analysis
 
 Power BI — Interactive dashboard and business insights
 
@@ -47,11 +51,15 @@ GitHub — Project documentation and portfolio
 Initial data-quality checks covered record counts, column inspection, data types, missing values, 
 and duplicate customer identifiers.
 Initial Observations :
-Total records: 10,000 customers.
-Missing values: 3 missing values in Surname.
-Invalid values: 3 records in EstimatedSalary contain -999999, which requires investigation.
-Data types: SQLite initially reported all imported columns as TEXT.
-Duplicate records: No duplicate CustomerId values were found in the initial check.
+-Total records: 10,000 customers.
+
+-Missing values: 3 missing values in Surname.
+
+-Invalid values: 3 records in EstimatedSalary contain -999999, which requires investigation.
+
+-Data types: SQLite initially reported all imported columns as TEXT.
+
+-Duplicate records: No duplicate CustomerId values were found in the initial check.
 
 ## Key Performance Indicators (KPIs)
 
