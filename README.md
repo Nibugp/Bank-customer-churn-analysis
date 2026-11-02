@@ -5,10 +5,12 @@ identify customer segments associated with higher churn and support data-driven 
 
 ## Business Problem
 Customer churn can affect a bank's ability to maintain customer relationships and retain deposits.
-The business wants to identify customers likely to churn
-Understand the impact of credit score, age, balance, and products on churn
-Analyze churn patterns across geographic regions
-Compare active vs inactive customer behavior.
+The business aims to:
+-Identify customer segments with higher churn rates.
+-Understand how credit score, age, account balance, and number of products relate to customer churn.
+-Analyze churn patterns across different geographic regions.
+-Compare customer churn behaviour between active and inactive members.
+-Identify customer segments that may require further investigation and targeted retention efforts.
 
 ## Dataset
 - **Source:** Bank Customer Churn Dataset 
