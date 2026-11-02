@@ -51,6 +51,7 @@ GitHub — Project documentation and portfolio
 Initial data-quality checks covered record counts, column inspection, data types, missing values, 
 and duplicate customer identifiers.
 Initial Observations :
+
 -Total records: 10,000 customers.
 
 -Missing values: 3 missing values in Surname.
