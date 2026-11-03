@@ -88,7 +88,7 @@ Cleaning Actions :
 | Churn by Activity Status | Examines churn among active and inactive customers |
 | Churn by Age Group | Identifies demographic patterns |
 | Average Balance by Churn Status | Compares balances of churned and retained customers |
-| Balance Associated with Churn | Sums the balances of customers who exited |
+| Total Balance Held by Churned Customers | Sums the balances of customers who exited |
 | Segment Churn Rate | Measures churn within a defined customer segment |
 
 ## Analysis Areas
@@ -99,7 +99,7 @@ Cleaning Actions :
 - Age-group analysis
 - Account balance and product relationships
 - High-churn segment identification and retention prioritisation
-- Customer segment ranking using SQL window functions
+
 
 ## Key Insights
 
@@ -119,9 +119,10 @@ Cleaning Actions :
 
 ## Conclusions
 
-The analysis shows that customer churn is concentrated in particular geographic, age, activity, and product segments rather than being evenly distributed across the customer base.
+This case study demonstrates how SQL and Power BI can be used to analyse customer churn patterns, examine customer segment behaviour and identify areas requiring further investigation.
 
-The findings provide the bank with a basis for prioritising further investigation into customer engagement, product suitability, and customer experience. Targeted retention initiatives can then be developed and evaluated using appropriate customer and service data.
+The analysis highlights differences in churn across geography, age groups, customer activity and product ownership. Based on these findings, potential retention strategies can be proposed for consideration by a hypothetical banking organisation.
+
 
 
 
